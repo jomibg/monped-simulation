@@ -45,6 +45,10 @@ class SimulationModel(Model):
         random_attitude: bool = True,
         attitude_mean: float = 0.5,
         attitude_std: float = 1.0,
+        subsidy_rate_1: float = 0.4,
+        subsidy_rate_2: float = 0.3,
+        subsidy_cap_1: float = 35,
+        subsidy_cap_2: float = 50 
     ) -> None:
         super().__init__()
         # Time parameters
@@ -55,6 +59,12 @@ class SimulationModel(Model):
         # Economic parameters
         self.tolerable_cost_pct: float = tolerable_cost_pct
         self.median_annual_income: int = median_annual_income
+
+        # Subsidies rates (SR) and capped maximum amount per m2 (SC)
+        self.SC1 = subsidy_cap_1
+        self.SR1 = subsidy_rate_1
+        self.SC2 = subsidy_cap_2    
+        self.SR2 = subsidy_rate_2
 
         # RA parameter
         self.mu_RA: float = mu_RA

@@ -18,6 +18,10 @@ def repeated_simulation_runs(
     attitude_mean: float = 0.5,
     attitude_std: float = 1.0,
     simulations: int = 10,
+    subsidy_rate_1: float = 0.4,
+    subsidy_rate_2: float = 0.3,
+    subsidy_cap_1: float = 35,
+    subsidy_cap_2: float = 50 
 ) -> pd.DataFrame:
     buidling_years_data = dict()
     for _ in range(simulations):
@@ -36,6 +40,10 @@ def repeated_simulation_runs(
             random_attitude=random_attitude,
             attitude_mean=attitude_mean,
             attitude_std=attitude_std,
+            subsidy_rate_1=subsidy_rate_1,
+            subsidy_rate_2=subsidy_rate_2,
+            subsidy_cap_1=subsidy_cap_1,
+            subsidy_cap_2=subsidy_cap_2 
         )
         model.run_for(model.max_time)
         df_buildings = model.datacollector.get_agenttype_vars_dataframe(BuildingAgent)

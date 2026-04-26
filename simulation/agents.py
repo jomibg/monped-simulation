@@ -123,13 +123,13 @@ class BuildingAgent(Agent):
 
         if self.subsidy_type == 0:
             subsidised_cost = min(
-                total_renovation_cost - self.outline_area * 12,
-                total_renovation_cost - total_renovation_cost * 0.2,
+                total_renovation_cost - self.outline_area * self.model.SC1,
+                total_renovation_cost - total_renovation_cost * self.model.SR1,
             )
         else:
             subsidised_cost = min(
-                total_renovation_cost - self.outline_area * 20,
-                total_renovation_cost - total_renovation_cost * 0.3,
+                total_renovation_cost - self.outline_area * self.model.SC2,
+                total_renovation_cost - total_renovation_cost * self.model.SR2,
             )
         return subsidised_cost / num_owners
     
